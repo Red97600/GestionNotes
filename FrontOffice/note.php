@@ -59,55 +59,55 @@ $eleve=$sl->fetchall();
               <?php 
 
 
-                for ($i=0; $i <count($eleve) ; $i++)  
-                        {    if(isset($_GET['Id']))
-                                {
-                                    if ($eleve[$i]['Note'] == NULL) {
-                                        echo "L'élève ".$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom']." n’a pas de note.";
-                                    } else {
-                                        if ($eleve[$i]['Id'] == $_GET['Id'] )
-                                                {   
-                                                    
-                                                echo '<p> Voiçi  les notes de '.$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom'].'</p>';
-
-                                                            echo "<table border='1'>";
-                                                            echo "<tr>
-                                                                <th>Classe</th>
-                                                                <th>Matière</th>
-                                                                <th>Note</th>
-                                                                <th>Date</th>
-                                                                
-                                                                </tr>";
-
-                                                for ($i=0; $i <count($eleve) ; $i++)  
-                                                {    if(isset($_GET['Id']))
-                                                        {
-                                                            if ($eleve[$i]['Id'] == $_GET['Id'] )
-                                                            {   
-                                                            
-
-
-                                                                echo "<tr>";
-                                                                    echo "<td>".$eleve[$i]['Nom_Classe']."</td>";
-                                                                    echo "<td>".$eleve[$i]['Nom_Matiere']."</td>";
-                                                                    echo "<td>".$eleve[$i]['Note']."</td>";
-                                                                    echo "<td>".$eleve[$i]['Date']."</td>";
-                                                                echo "</tr>";
-
-                                                            }         
-                                                            
-                                                        }
-                                                    }   
-                                                }         
-                                    }
+    for ($i=0; $i <count($eleve) ; $i++)  
+            {    if(isset($_GET['Id']))
+                    {
+                        if ($eleve[$i]['Note'] == NULL) {
+                            echo "L'élève ".$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom']." n’a pas de note.";
+                        } else {
+                            if ($eleve[$i]['Id'] == $_GET['Id'] )
+                                    {   
                                         
+                                    echo '<p> Voiçi  les notes de '.$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom'].'</p>';
+
+                                                echo "<table border='1'>";
+                                                echo "<tr>
+                                                    <th>Classe</th>
+                                                    <th>Matière</th>
+                                                    <th>Note</th>
+                                                    <th>Date</th>
+                                                    
+                                                    </tr>";
+
+                                    for ($i=0; $i <count($eleve) ; $i++)  
+                                    {    if(isset($_GET['Id']))
+                                            {
+                                                if ($eleve[$i]['Id'] == $_GET['Id'] )
+                                                {   
                                                 
-                                }
-                            } 
-                    
+
+
+                                                    echo "<tr>";
+                                                        echo "<td>".$eleve[$i]['Nom_Classe']."</td>";
+                                                        echo "<td>".$eleve[$i]['Nom_Matiere']."</td>";
+                                                        echo "<td>".$eleve[$i]['Note']."</td>";
+                                                        echo "<td>".$eleve[$i]['Date']."</td>";
+                                                    echo "</tr>";
+
+                                                }         
+                                                
+                                            }
+                                        }   
+                                    }         
+                        }
+                            
+                                    
+                    }
+                } 
+        
             
-               ?>       
-       </ul>
+ ?>       
+    </ul>
 
 
     </body>
