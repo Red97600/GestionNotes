@@ -22,7 +22,7 @@ if (isset($_POST['Suprimer']))
     }
 
 // AFFICHE
-    $cl = $mysqlClient->prepare('SELECT `Id`, `Nom_Classe` FROM `classes`');
+    $cl = $mysqlClient->prepare('SELECT Id, Nom_Classe FROM classes');
     $cl->execute();
     $classe = $cl->fetchAll();
 
