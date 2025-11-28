@@ -118,4 +118,3 @@ $elv=$il->fetchall();
 
 </body>
 </html>
- DELETE FROM eleves WHERE `eleves`.`Id` = 5
