@@ -2,7 +2,7 @@
 $mysqlClient = new PDO('mysql:host=localhost;dbname=gestionnotes;charset=utf8', 'root', '');
 
 $tbclas=[];
-$clas=$mysqlClient->prepare('SELECT Id,Nom_Classe FROM classes');
+$clas=$mysqlClient->prepare('SELECT * FROM `classes` ORDER BY `classes`.`Nom_Classe` ASC');
 $clas->execute();
 $tbclas=$clas->fetchAll();
 
@@ -20,6 +20,17 @@ if (isset($_GET['ajouter']) && !empty($_GET['Prenom']) && !empty($_GET['Nom']) &
     ]);  
 }
 
+// SUPPRiMER
+if (isset($_POST['Suprimer'])) 
+    {
+        $idsup = (int)$_POST['Suprimer'];
+        $delet = $mysqlClient->prepare('DELETE FROM eleves WHERE `eleves`.`Id` = :Id');
+        $delet->execute(['Id' => $idsup]);
+        
+    }
+
+
+//affiche
 $elv=[];
 $il=$mysqlClient->prepare
 ('SELECT eleves.Id,eleves.Nom,eleves.Prenom,classes.Nom_Classe FROM eleves JOIN classes ON eleves.Id_Classe = classes.Id;
@@ -60,13 +71,13 @@ $elv=$il->fetchall();
         <form action="" method="GET">
 
         <label for="Prenom">prenom :</label>
-        <input type="text" name="Prenom" placeholder="ecrie le prenom">
+        <input type="text" required name="Prenom" placeholder="ecrie le prenom">
 
         <label for="Nom">Nom:</label>
-        <input type="text" name="Nom" placeholder="ecrie le Nom">
+        <input type="text" required name="Nom" placeholder="ecrie le Nom">
         
         <label for="Id"> classes : </label>
-        <select name="Id" id="Id">
+        <select name="Id" required id="Id">
             <option value="">choisissez la classe</option>
             <?php        
                 for ($i=0; $i <count($tbclas) ; $i++) 
@@ -109,6 +120,16 @@ $elv=$il->fetchall();
                 echo "<td>".$elv[$i]['Nom']."</td>";
                 echo "<td>".$elv[$i]['Prenom']."</td>";
                 echo "<td>".$elv[$i]['Nom_Classe']."</td>";
+                echo '<td>
+            <form method="POST" action="Elèves.php">
+             <button type="submit" name="Id" value="'.$elv[$i]['Id'].'">Modiffier</button>
+            </form>
+            <form method="POST" action="Elèves.php">
+                <button type="submit" name="Suprimer" value="'.$elv[$i]['Id'].'">Supprimer</button>
+            </form>
+            </td>';
+           
+              
             echo "</tr>";
            }           
         }

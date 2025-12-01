@@ -25,7 +25,7 @@ if (isset($_POST['Suprimer']))
     $cl = $mysqlClient->prepare('SELECT Id, Nom_Classe FROM classes');
     $cl->execute();
     $classe = $cl->fetchAll();
-
+   
 
 ?>
 
@@ -48,7 +48,7 @@ if (isset($_POST['Suprimer']))
      <h2>Ajouter une classe</h2>
      <form action="" method="POST">
         <label for="Nom_Classe">Libellé :</label>
-        <input type="text" name="Nom_Classe" placeholder="ajoute une classe">
+        <input type="text" required name="Nom_Classe" placeholder="ajoute une classe">
         <button type="submit" name="ajouter">Ajouter</button>
      </form>
 
@@ -62,7 +62,7 @@ if (isset($_POST['Suprimer']))
             echo '<td>'.htmlspecialchars($classe[$i]['Nom_Classe']).'</td>';
             echo '<td>
             <form method="POST" action="editer.php">
-                <button type="submit" name="Id" value="'.$classe[$i]['Id'].'">Editer </button>
+             <button type="submit" name="Id" value="'.$classe[$i]['Id'].'">Modiffier</button>
             </form>
 
             <form method="POST" action="classes.php">

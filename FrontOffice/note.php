@@ -38,7 +38,7 @@ $eleve=$sl->fetchall();
            
        </nav>
        <ul><p>
-                    <form method="GET" action="">
+                    <form method="POST" action="">
                 <label for="Id">Veillez selectionnez l'élève que vous souhaitez voir ses notes :</label>
             <select name="Id" id="Id"placeholder="Modifier la classe">
              
@@ -60,15 +60,15 @@ $eleve=$sl->fetchall();
 
 
     for ($i=0; $i <count($eleve) ; $i++)  
-            {    if(isset($_GET['Id']))
-                    {
-                        if ($eleve[$i]['Note'] == NULL) {
-                            echo "L'élève ".$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom']." n’a pas de note.";
-                        } else {
-                            if ($eleve[$i]['Id'] == $_GET['Id'] )
-                                    {   
-                                        
-                                    echo '<p> Voiçi  les notes de '.$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom'].'</p>';
+            {    if(isset($_POST['Id']))
+                    { 
+                      if ($eleve[$i]['Id'] == $_POST['Id'] )
+                        {  if ($eleve[$i]['Note'] == NULL) 
+                            {
+                             echo "L'élève ".$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom']." n’a pas de note.";
+                            } else 
+                            {
+                                echo '<p> Voiçi  les notes de '.$eleve[$i]['Prenom'].' '.$eleve[$i]['Nom'].'</p>';
 
                                                 echo "<table border='1'>";
                                                 echo "<tr>
@@ -80,7 +80,7 @@ $eleve=$sl->fetchall();
                                                     </tr>";
 
                                     for ($i=0; $i <count($eleve) ; $i++)  
-                                    {    if(isset($_GET['Id']))
+                                    {    if(isset($_POST['Id']))
                                             {
                                                 if ($eleve[$i]['Id'] == $_GET['Id'] )
                                                 {   
@@ -97,13 +97,18 @@ $eleve=$sl->fetchall();
                                                 }         
                                                 
                                             }
-                                        }   
-                                    }         
-                        }
-                            
+                                    }       
+                                }                    
+                        }      
+                                        
+                    }                   
+            }                       
+                           
+                        
+                           
                                     
-                    }
-                } 
+                    
+                 
         
             
  ?>       
