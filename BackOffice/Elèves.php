@@ -121,7 +121,7 @@ $elv=$il->fetchall();
                 echo "<td>".$elv[$i]['Prenom']."</td>";
                 echo "<td>".$elv[$i]['Nom_Classe']."</td>";
                 echo '<td>
-            <form method="POST" action="Elèves.php">
+            <form method="POST" action="editelv.php">
              <button type="submit" name="Id" value="'.$elv[$i]['Id'].'">Modiffier</button>
             </form>
             <form method="POST" action="Elèves.php">

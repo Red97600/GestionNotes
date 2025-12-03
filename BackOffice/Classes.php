@@ -46,7 +46,7 @@ if (isset($_POST['Suprimer']))
    </nav>
 
      <h2>Ajouter une classe</h2>
-     <form action="" method="POST">
+     <form action="Classes.php" method="POST">
         <label for="Nom_Classe">Libellé :</label>
         <input type="text" required name="Nom_Classe" placeholder="ajoute une classe">
         <button type="submit" name="ajouter">Ajouter</button>
